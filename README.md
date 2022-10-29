@@ -9,6 +9,4 @@
 
 - E use QR Code no caso de espelhar no seu celular com o aplicativo expo go.
 
-<br/>
-
 <img src="./public/appImage.png" alt="" >
