@@ -1,18 +1,14 @@
-import { Text, View, Image } from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons';
 
-import { styles } from './styles';
+import { Container, Content, Title } from './styles';
 
 export function Header() {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.textColor}>
-          Lista de Compra
-        </Text>
-        <Image
-          source={require('../../assets/ShoppingCart.png')}
-        />
-      </View>
-    </View>
+    <Container>
+      <Content>
+        <Title>Lista de Compra</Title>
+        <FontAwesome5 name="shopping-cart" size={24} color="white" />
+      </Content>
+    </Container>
   );
 }

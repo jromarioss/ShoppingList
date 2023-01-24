@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "purchaseList",
-    "slug": "purchaseList",
+    "name": "listaCompra",
+    "slug": "listaCompra",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

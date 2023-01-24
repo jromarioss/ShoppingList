@@ -1,15 +1,30 @@
-import { StatusBar } from 'react-native';
+import { ActivityIndicator, StatusBar } from 'react-native';
+import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { ThemeProvider } from 'styled-components';
 
-import { Home } from './src/screens/Home';
+import theme from './src/theme';
+
+import { Routes } from './src/routes';
+import { Loading } from './src/components/Loading';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Roboto_400Regular, 
+    Roboto_700Bold
+  });
+
   return (
-    <>
-      <StatusBar
+    <ThemeProvider theme={theme}>
+      <StatusBar 
         barStyle='light-content'
-        backgroundColor='#1D1D1D'
+        backgroundColor='transparent'
+        translucent
       />
-      <Home />
-    </>
+      {fontsLoaded ?
+        <Routes />
+        :
+        <Loading />
+      }
+    </ThemeProvider>
   );
 }
