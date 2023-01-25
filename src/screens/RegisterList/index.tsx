@@ -6,7 +6,7 @@ import { Container, Content, Input, Text, Title } from './styles';
 
 import { Button } from '../../components/Button';
 import { HeaderWithButton } from '../../components/HeaderWithButton';
-import { listCreate } from '../../storage/list/listCreate';
+import { listCreate, ListStorageDTO } from '../../storage/list/listCreate';
 import { AppError } from '../../utils/AppError';
 
 export function RegisterList() {
@@ -19,7 +19,14 @@ export function RegisterList() {
         return Alert.alert("Nova lista", "Informe o nome da lista.");
       }
 
-      await listCreate(list);
+      const newDate = new Date().toString();
+
+      const newList: ListStorageDTO = {
+        name: list,
+        cratedAt: newDate,
+      }
+      console.log(newList);
+      await listCreate(newList);
       navigation.navigate("listProducts", { list })
     } catch(error) {
       if (error instanceof AppError) {

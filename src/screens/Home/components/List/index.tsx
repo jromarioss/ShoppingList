@@ -3,26 +3,26 @@ import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
 import { Container, TextItem , Info} from './styles';
+import { ListStorageDTO } from '../../../../storage/list/listCreate';
 
 interface ListProps extends TouchableOpacityProps {
-  title: string;
-  date: string;
+  data: ListStorageDTO;
 }
 
-export function List({ title, date, ...rest }: ListProps) {
+export function List({ data, ...rest }: ListProps) {
 
   return (
     <Container {...rest}>
       <Info>
         <Feather name="shopping-bag" size={20} color="#C2C2C2" />
         <TextItem>
-          {title}
+          {data.name}
         </TextItem>
       </Info>
       
       <Info>
         <TextItem>
-          {date}
+          {data.cratedAt}
         </TextItem>
         <AntDesign name="calendar" size={20} color="#C2C2C2" />
       </Info>

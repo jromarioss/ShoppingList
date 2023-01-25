@@ -13,6 +13,7 @@ import { productsGetByList } from '../../storage/products/productsGetByList';
 import { ProductsStorageDTO } from '../../storage/products/ProductsStorageDTO';
 import { productsRemoveByList } from '../../storage/products/productsRemoveByList';
 import { Loading } from '../../components/Loading';
+import { productsUpdate } from '../../storage/products/productsUpdate';
 
 interface RouteParams {
   list: string;
@@ -44,15 +45,28 @@ export function ListProducts() {
     navigation.navigate('newProduct', { list });
   }
 
-  function handleMarkeDone(product: string) {
+  /* function handleMarkeDone(product: string) {
     setProducts(products.map((item) => {
       if (item.productName === product) {
         item.done = !item.done;
       }
       return item;
     }));
-  }
-
+  } */
+  function handleMarkeDone(product: string) {
+    try {
+      products.map(async (item) => {
+        if (item.productName === product) {
+          item.done = !item.done;
+        }
+        console.log(item);
+        return await productsUpdate(item, list);
+      });
+    } catch(error) {
+      console.log(error)
+    }
+  } 
+  
   async function listRemove() {
     try {
       setIsLoading(true);

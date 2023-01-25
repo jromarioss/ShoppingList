@@ -47,7 +47,7 @@ export function ListOfProducts({ data, onHandleMarkDone, onHandleRemove }: ListO
           <TextItemLineThrough>{data.productName}</TextItemLineThrough>
         }
       </Info>
-
+        
       <Info>
         <TextItem style={{ marginRight: 8 }}>R$ {data.price.toFixed(2)}</TextItem>
         <TouchableOpacity onPress={handleProductRemove}>

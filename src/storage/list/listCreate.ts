@@ -4,13 +4,18 @@ import { listGetAll } from './listGetAll';
 import { AppError } from '../../utils/AppError';
 import { LIST_COLLECTION } from '../storageConfig';
 
-export async function listCreate(newList: string) {
+export interface ListStorageDTO {
+  name: string;
+  cratedAt: string;
+}
+
+export async function listCreate(newList: ListStorageDTO) {
   try {
     const storageList = await listGetAll();
 
-    const listAlreadyExists = storageList.includes(newList);
+    const listAlreadyExists = storageList.filter(list => list.name === newList.name);
 
-    if (listAlreadyExists) {
+    if (listAlreadyExists.length > 0) {
       throw new AppError("Já existe uma lista cadastrado com esse nome.");
     }
 

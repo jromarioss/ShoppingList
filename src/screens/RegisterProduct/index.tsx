@@ -32,7 +32,7 @@ export function RegisterProduct() {
         price: Number(productPrice),
         done: false,
       }
-      
+
       await productsAddByList(newProduct, list);
       navigation.goBack();
     } catch(error) {
