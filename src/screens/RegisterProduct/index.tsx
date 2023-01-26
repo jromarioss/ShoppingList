@@ -5,7 +5,7 @@ import { Button } from '../../components/Button';
 import { HeaderWithButton } from '../../components/HeaderWithButton';
 import { ProductsStorageDTO } from '../../storage/products/ProductsStorageDTO';
 
-import { Container, Content, InputPrice, InputProduct, InputUnity, Text, Title, ViewInput } from './styles';
+import { Container, Content, InputPrice, Input, InputUnity, Text, Title, ViewInput } from './styles';
 import { productsAddByList } from '../../storage/products/productsAddByList';
 import { Alert } from 'react-native';
 
@@ -52,7 +52,7 @@ export function RegisterProduct() {
           Adicionar produtos na lista de {list}
         </Text>
 
-        <InputProduct 
+        <Input 
           placeholder="Nome do produto"
           placeholderTextColor="#C2C2C2"
           onChangeText={setProductName}
@@ -61,14 +61,16 @@ export function RegisterProduct() {
 
         <ViewInput>
           <InputPrice 
-            placeholder="Preço R$" 
+            placeholder="Preço R$3.99" 
             placeholderTextColor="#C2C2C2"
+            keyboardType="number-pad"
             onChangeText={setProductPrice}
             value={productPrice}
             />
           <InputUnity 
             placeholder="Unidade" 
             placeholderTextColor="#C2C2C2"
+            keyboardType="number-pad"
             onChangeText={setProductUnity}
             value={productUnity}
             />

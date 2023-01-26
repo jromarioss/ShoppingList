@@ -13,7 +13,7 @@ export const Content = styled.View`
   padding: 24px;
 `;
 
-const Input = styled.TextInput`
+export const Input = styled.TextInput`
   height: 52px;
   width: 100%;
   margin-bottom: 16px;
@@ -21,9 +21,6 @@ const Input = styled.TextInput`
   border-radius: 6px;
   color: ${({ theme }) => theme.COLORS.WHITE};
   background-color: ${({ theme }) => theme.COLORS.GRAY_400};
-`;
-
-export const InputProduct = styled(Input)`
 `;
 
 export const ViewInput = styled.View`

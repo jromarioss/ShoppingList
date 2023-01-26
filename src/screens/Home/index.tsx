@@ -5,12 +5,13 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { List } from './components/List';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
+import { Loading } from '../../components/Loading';
 import { ListEmpty } from '../../components/ListEmpty';
 
-import { Container, LineThrough, } from './styles';
 import { listGetAll } from '../../storage/list/listGetAll';
-import { Loading } from '../../components/Loading';
-import { ListStorageDTO } from '../../storage/list/listCreate';
+import { ListStorageDTO } from '../../storage/list/ListStorageDTO';
+
+import { Container, LineThrough, } from './styles';
 
 export function Home() {
   const [list, setList] = useState<ListStorageDTO[]>([]);
@@ -25,7 +26,6 @@ export function Home() {
   function handleGoToListOfProduct(list: string) {
     navigation.navigate('listProducts', { list });
   }
-  console.log(list)
 
   async function fetchLists() {
     try {

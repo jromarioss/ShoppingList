@@ -3,11 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { listGetAll } from './listGetAll';
 import { AppError } from '../../utils/AppError';
 import { LIST_COLLECTION } from '../storageConfig';
-
-export interface ListStorageDTO {
-  name: string;
-  cratedAt: string;
-}
+import { ListStorageDTO } from './ListStorageDTO';
 
 export async function listCreate(newList: ListStorageDTO) {
   try {

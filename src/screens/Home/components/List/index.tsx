@@ -3,7 +3,8 @@ import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
 import { Container, TextItem , Info} from './styles';
-import { ListStorageDTO } from '../../../../storage/list/listCreate';
+
+import { ListStorageDTO } from '../../../../storage/list/ListStorageDTO';
 
 interface ListProps extends TouchableOpacityProps {
   data: ListStorageDTO;

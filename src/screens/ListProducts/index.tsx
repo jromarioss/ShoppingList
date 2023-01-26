@@ -45,25 +45,12 @@ export function ListProducts() {
     navigation.navigate('newProduct', { list });
   }
 
-  /* function handleMarkeDone(product: string) {
-    setProducts(products.map((item) => {
-      if (item.productName === product) {
-        item.done = !item.done;
-      }
-      return item;
-    }));
-  } */
-  function handleMarkeDone(product: string) {
+  async function handleMarkeDone(name: string) {
     try {
-      products.map(async (item) => {
-        if (item.productName === product) {
-          item.done = !item.done;
-        }
-        console.log(item);
-        return await productsUpdate(item, list);
-      });
+      await productsUpdate(name, list);
+      fetchProductByList();
     } catch(error) {
-      console.log(error)
+      console.log(error) 
     }
   } 
   
