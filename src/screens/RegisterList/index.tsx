@@ -1,17 +1,24 @@
+import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Alert } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
 import { Container, Content, Input, Text, Title } from './styles';
 
+import { AppError } from '../../utils/AppError';
+
 import { Button } from '../../components/Button';
 import { HeaderWithButton } from '../../components/HeaderWithButton';
-import { listCreate, ListStorageDTO } from '../../storage/list/listCreate';
-import { AppError } from '../../utils/AppError';
+
+import { listCreate } from '../../storage/list/listCreate';
+import { ListStorageDTO } from '../../storage/list/ListStorageDTO';
 
 export function RegisterList() {
   const [list, setList] = useState('');
   const navigation = useNavigation();
+
+  const dayFormated = dayjs().format('DD/MM/YYYY');
+  console.log(dayFormated);
 
   async function handleNewList() {
     try {
@@ -19,13 +26,13 @@ export function RegisterList() {
         return Alert.alert("Nova lista", "Informe o nome da lista.");
       }
 
-      const newDate = new Date().toString();
+      const newDate = dayjs(new Date()).format('DD/MM/YYYY');
 
       const newList: ListStorageDTO = {
         name: list,
         cratedAt: newDate,
       }
-      console.log(newList);
+      
       await listCreate(newList);
       navigation.navigate("listProducts", { list })
     } catch(error) {

@@ -2,18 +2,19 @@ import { useState, useCallback } from 'react';
 import { Alert, FlatList } from 'react-native';
 import { useNavigation, useRoute, useFocusEffect } from '@react-navigation/native';
 
+import { Header } from './components/Header';
 import { Button } from '../../components/Button';
+import { Loading } from '../../components/Loading';
 import { ListEmpty } from '../../components/ListEmpty';
 import { ListOfProducts } from './components/ListOfProducts';
 
 import { Container, CountArea, CountAreaInsinde, CountName, CountNumber, CountNumberArea, Text, Title, LineThrough, TotalArea, TotalPrice } from './styles';
-import { Header } from './components/Header';
+
+import { productsUpdate } from '../../storage/products/productsUpdate';
 import { listToRemoveByName } from '../../storage/list/listToRemoveByName';
 import { productsGetByList } from '../../storage/products/productsGetByList';
 import { ProductsStorageDTO } from '../../storage/products/ProductsStorageDTO';
 import { productsRemoveByList } from '../../storage/products/productsRemoveByList';
-import { Loading } from '../../components/Loading';
-import { productsUpdate } from '../../storage/products/productsUpdate';
 
 interface RouteParams {
   list: string;
@@ -23,9 +24,7 @@ export function ListProducts() {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<ProductsStorageDTO[]>([]);
   const route = useRoute();
-
   const { list } = route.params as RouteParams;
-
   const navigation = useNavigation();
 
   const productsCounts = products.reduce((acc, item) => {
@@ -45,12 +44,22 @@ export function ListProducts() {
     navigation.navigate('newProduct', { list });
   }
 
-  async function handleMarkeDone(name: string) {
+  async function handleMarkeDone(product: string) {
     try {
-      await productsUpdate(name, list);
-      fetchProductByList();
+      const updatedProducts = products.map((item) => {
+        if(item.productName === product) {
+          return {
+            ...item,
+            done: !item.done
+          }
+        }
+        return item
+      });
+
+      await productsUpdate(updatedProducts, list)
+      setProducts(updatedProducts)
     } catch(error) {
-      console.log(error) 
+      console.log(error)
     }
   } 
   
@@ -69,8 +78,8 @@ export function ListProducts() {
 
   function handleListToRemove() {
     Alert.alert(
-      "Remover",
-      "Deseja remover a lista?",
+      "Remover Lista",
+      `Deseja remover essa lista?`,
       [
         { text: "Não", style: "cancel"},
         { text: "Sim", onPress: () => listRemove() }

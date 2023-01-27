@@ -1,8 +1,9 @@
 import { Feather } from '@expo/vector-icons'; 
 import { Alert, TouchableOpacity } from 'react-native';
-import { ProductsStorageDTO } from '../../../../storage/products/ProductsStorageDTO';
 
 import { Container, Info, TextItem, TextItemLineThrough } from './styled';
+
+import { ProductsStorageDTO } from '../../../../storage/products/ProductsStorageDTO';
 
 interface ListOfProductsProps {
   data: ProductsStorageDTO;
@@ -14,8 +15,8 @@ export function ListOfProducts({ data, onHandleMarkDone, onHandleRemove }: ListO
 
   function handleProductRemove() {
     Alert.alert(
-      "Remover",
-      "Deseja remover a lista?",
+      "Remover Produto",
+      `Deseja remover o produto ${data.productName}`,
       [
         { text: "Não", style: "cancel"},
         { text: "Sim", onPress: () => onHandleRemove(data.productName) }

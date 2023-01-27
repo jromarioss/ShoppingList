@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { Container, ButtonBack } from './styles';
 
 export function HeaderWithButton() {
-
   const navigation = useNavigation();
 
   function handleBackToHome() {

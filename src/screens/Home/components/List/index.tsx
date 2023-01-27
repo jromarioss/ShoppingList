@@ -1,6 +1,6 @@
-import { TouchableOpacityProps } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { TouchableOpacityProps } from 'react-native';
 
 import { Container, TextItem , Info} from './styles';
 
@@ -11,7 +11,6 @@ interface ListProps extends TouchableOpacityProps {
 }
 
 export function List({ data, ...rest }: ListProps) {
-
   return (
     <Container {...rest}>
       <Info>

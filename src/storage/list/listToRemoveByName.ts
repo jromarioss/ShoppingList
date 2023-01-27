@@ -7,8 +7,10 @@ import { listGetAll } from './listGetAll';
 export async function listToRemoveByName(listToRemove: string) {
   try {
     const storageList = await listGetAll();
-    const lists = storageList.filter(list => list.name !== listToRemove);
-    await AsyncStorage.setItem(LIST_COLLECTION, JSON.stringify(lists));
+
+    const filterListAndRemove = storageList.filter(list => list.name !== listToRemove);
+
+    await AsyncStorage.setItem(LIST_COLLECTION, JSON.stringify(filterListAndRemove));
     await AsyncStorage.removeItem(`${PRODUCTS_COLLECTION}-${listToRemove}`);
   } catch(error) {
     throw error;

@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { LIST_COLLECTION } from '../storageConfig';
-import { ListStorageDTO } from "./listCreate";
+import { ListStorageDTO } from "./ListStorageDTO";
 
 export async function listGetAll() {
   try {
