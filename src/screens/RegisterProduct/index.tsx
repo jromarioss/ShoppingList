@@ -26,6 +26,17 @@ export function RegisterProduct() {
 
   async function handleNewProduct() {
     try {
+      if (productName.trim().length === 0) {
+        return Alert.alert("Novo Produto", "Preencha todos os Campos");
+      }
+
+      if (productUnity === '') {
+        return Alert.alert("Novo Produto", "Preencha todos os Campos");
+      }
+
+      if (productPrice === '') {
+        return Alert.alert("Novo Produto", "Preencha todos os Campos");
+      }
 
       const newProduct: ProductsStorageDTO = {
         productName: productName,
@@ -56,6 +67,7 @@ export function RegisterProduct() {
         <Input 
           placeholder="Nome do produto"
           placeholderTextColor="#C2C2C2"
+          autoCapitalize="none"
           onChangeText={setProductName}
           value={productName}
         />
@@ -67,14 +79,14 @@ export function RegisterProduct() {
             keyboardType="number-pad"
             onChangeText={setProductPrice}
             value={productPrice}
-            />
+          />
           <InputUnity 
             placeholder="Unidade" 
             placeholderTextColor="#C2C2C2"
             keyboardType="number-pad"
             onChangeText={setProductUnity}
             value={productUnity}
-            />
+          />
         </ViewInput>
 
         <Button title="Salvar produto" onPress={handleNewProduct} />

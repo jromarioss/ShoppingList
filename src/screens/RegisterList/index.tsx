@@ -18,7 +18,6 @@ export function RegisterList() {
   const navigation = useNavigation();
 
   const dayFormated = dayjs().format('DD/MM/YYYY');
-  console.log(dayFormated);
 
   async function handleNewList() {
     try {
