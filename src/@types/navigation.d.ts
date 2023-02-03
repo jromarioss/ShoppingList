@@ -1,5 +1,3 @@
-import { ProductsStorageDTO } from "../storage/products/ProductsStorageDTO";
-
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {

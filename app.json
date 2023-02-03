@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "listaCompra",
-    "slug": "listaCompra",
+    "name": "listacompra",
+    "slug": "teste",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,8 +12,7 @@
       "backgroundColor": "#262626"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/dfb2aa0e-e7e9-4b20-9e67-009a17880618"
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
@@ -25,19 +24,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#262626"
-      },
-      "package": "com.jromarioss.listaCompra"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "dfb2aa0e-e7e9-4b20-9e67-009a17880618"
-      }
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
     }
   }
 }

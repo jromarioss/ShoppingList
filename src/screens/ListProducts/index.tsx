@@ -157,7 +157,11 @@ export function ListProducts() {
             data={products}
             keyExtractor={item => item.productName}
             renderItem={({ item }) => (
-              <ListOfProducts data={item} onHandleMarkDone={handleMarkeDone} onHandleRemove={handleRemoveProductName}  />
+              <ListOfProducts 
+                data={item} 
+                onHandleMarkDone={handleMarkeDone} 
+                onHandleRemove={handleRemoveProductName}
+              />
             )}
             ListEmptyComponent={() => (
               <ListEmpty

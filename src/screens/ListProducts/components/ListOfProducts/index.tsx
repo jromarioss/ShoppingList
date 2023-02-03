@@ -1,9 +1,13 @@
 import { Feather } from '@expo/vector-icons'; 
 import { Alert, TouchableOpacity } from 'react-native';
 
-import { Container, Info, TextItem, TextItemLineThrough } from './styled';
+import { Container, Info, TextItem, TextItemName, TextItemLineThrough } from './styled';
 
 import { ProductsStorageDTO } from '../../../../storage/products/ProductsStorageDTO';
+
+interface RouteParams {
+  list: string;
+}
 
 interface ListOfProductsProps {
   data: ProductsStorageDTO;
@@ -30,7 +34,6 @@ export function ListOfProducts({ data, onHandleMarkDone, onHandleRemove }: ListO
 
   return (
     <Container>
-      <Info>
         {!data.done ?
           <TouchableOpacity>
             <Feather name="circle" size={32} color="#C2C2C2" onPress={markDone} />
@@ -43,14 +46,14 @@ export function ListOfProducts({ data, onHandleMarkDone, onHandleRemove }: ListO
 
         <TextItem>{data.unity}</TextItem>
         {!data.done ?
-          <TextItem>{data.productName}</TextItem>
+          <TextItemName numberOfLines={1}>{data.productName}</TextItemName>
           :
-          <TextItemLineThrough>{data.productName}</TextItemLineThrough>
+          <TextItemLineThrough numberOfLines={1}>{data.productName}</TextItemLineThrough>
         }
-      </Info>
         
       <Info>
         <TextItem style={{ marginRight: 8 }}>R$ {data.price.toFixed(2)}</TextItem>
+        
         <TouchableOpacity onPress={handleProductRemove}>
           <Feather name="trash" size={32} color="#C2C2C2" />
         </TouchableOpacity>

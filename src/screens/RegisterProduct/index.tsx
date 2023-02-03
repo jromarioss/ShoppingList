@@ -67,7 +67,6 @@ export function RegisterProduct() {
         <Input 
           placeholder="Nome do produto"
           placeholderTextColor="#C2C2C2"
-          autoCapitalize="none"
           onChangeText={setProductName}
           value={productName}
         />
