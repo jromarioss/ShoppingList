@@ -16,16 +16,18 @@ import { productsGetByList } from '../../storage/products/productsGetByList';
 import { ProductsStorageDTO } from '../../storage/products/ProductsStorageDTO';
 import { productsRemoveByList } from '../../storage/products/productsRemoveByList';
 
-interface RouteParams {
+export interface RouteParams {
   list: string;
 }
 
 export function ListProducts() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [products, setProducts] = useState<ProductsStorageDTO[]>([]);
   const route = useRoute();
   const { list } = route.params as RouteParams;
+  
   const navigation = useNavigation();
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [products, setProducts] = useState<ProductsStorageDTO[]>([]);
 
   const productsCounts = products.reduce((acc, item) => {
     if(item.done) {
@@ -44,6 +46,10 @@ export function ListProducts() {
     navigation.navigate('newProduct', { list });
   }
 
+  function handleEditProduct(product: any) {
+    navigation.navigate('editProduct', { list, product })
+  }
+
   async function handleMarkeDone(product: string) {
     try {
       const updatedProducts = products.map((item) => {
@@ -55,7 +61,7 @@ export function ListProducts() {
         }
         return item
       });
-
+      
       await productsUpdate(updatedProducts, list)
       setProducts(updatedProducts)
     } catch(error) {
@@ -161,6 +167,7 @@ export function ListProducts() {
                 data={item} 
                 onHandleMarkDone={handleMarkeDone} 
                 onHandleRemove={handleRemoveProductName}
+                onHandleEdit={() => handleEditProduct(item)}
               />
             )}
             ListEmptyComponent={() => (

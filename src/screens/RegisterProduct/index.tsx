@@ -9,6 +9,7 @@ import { HeaderWithButton } from '../../components/HeaderWithButton';
 
 import { productsAddByList } from '../../storage/products/productsAddByList';
 import { ProductsStorageDTO } from '../../storage/products/ProductsStorageDTO';
+import { AppError } from '../../utils/AppError';
 
 interface RouteParams {
   list: string;
@@ -38,18 +39,27 @@ export function RegisterProduct() {
         return Alert.alert("Novo Produto", "Preencha todos os Campos");
       }
 
+      const pPrice = Number(productPrice.replace(',', '.'));
+
+      const id = String(new Date().getTime())
+
       const newProduct: ProductsStorageDTO = {
+        id: id,
         productName: productName,
         unity: Number(productUnity),
-        price: Number(productPrice),
+        price: pPrice,
         done: false,
       }
 
       await productsAddByList(newProduct, list);
-      navigation.goBack();
+      navigation.navigate('listProducts', { list });
     } catch(error) {
-      console.log(error);
-      Alert.alert("Novo produto", "Não foi possível adicionar o novo produto.");
+      if (error instanceof AppError) {
+        Alert.alert("Nova lista", error.message);
+      } else {
+        Alert.alert("Nova lista", "Não foi possível cirar uma nova lista.");
+        console.log(error);
+      }
     }
   }
 
@@ -69,6 +79,7 @@ export function RegisterProduct() {
           placeholderTextColor="#C2C2C2"
           onChangeText={setProductName}
           value={productName}
+          maxLength={10}
         />
 
         <ViewInput>
@@ -78,6 +89,7 @@ export function RegisterProduct() {
             keyboardType="number-pad"
             onChangeText={setProductPrice}
             value={productPrice}
+            maxLength={6}
           />
           <InputUnity 
             placeholder="Unidade" 
@@ -85,6 +97,7 @@ export function RegisterProduct() {
             keyboardType="number-pad"
             onChangeText={setProductUnity}
             value={productUnity}
+            maxLength={3}
           />
         </ViewInput>
 

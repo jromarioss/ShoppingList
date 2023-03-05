@@ -33,7 +33,7 @@ export function RegisterList() {
       }
       
       await listCreate(newList);
-      navigation.navigate("listProducts", { list })
+      navigation.navigate("listProducts", { list: newList.name })
     } catch(error) {
       if (error instanceof AppError) {
         Alert.alert("Nova lista", error.message);
@@ -59,6 +59,7 @@ export function RegisterList() {
           placeholder="Nome da lista de compra"
           placeholderTextColor="#C2C2C2"
           onChangeText={setList}
+          maxLength={13}
         />
 
         <Button title="Criar lista" onPress={handleNewList} />

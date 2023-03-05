@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { EditProduct } from '../screens/EditProduct';
 import { Home } from '../screens/Home';
 import { ListProducts } from '../screens/ListProducts';
 import { RegisterList } from '../screens/RegisterList';
@@ -13,6 +14,11 @@ export function AppRouter() {
       <Screen
         name="home"
         component={Home}
+      />
+
+      <Screen
+        name="editProduct"
+        component={EditProduct}
       />
 
       <Screen 

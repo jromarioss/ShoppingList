@@ -13,9 +13,10 @@ interface ListOfProductsProps {
   data: ProductsStorageDTO;
   onHandleMarkDone: (product: string) => void;
   onHandleRemove: (productName: string) => void;
+  onHandleEdit: (product: any) => void;
 }
 
-export function ListOfProducts({ data, onHandleMarkDone, onHandleRemove }: ListOfProductsProps) {
+export function ListOfProducts({ data, onHandleMarkDone, onHandleRemove, onHandleEdit }: ListOfProductsProps) {
 
   function handleProductRemove() {
     Alert.alert(
@@ -26,6 +27,10 @@ export function ListOfProducts({ data, onHandleMarkDone, onHandleRemove }: ListO
         { text: "Sim", onPress: () => onHandleRemove(data.productName) }
       ]
     );
+  }
+
+  async function handleEdit() {
+    onHandleEdit(data)
   }
 
   async function markDone() {
@@ -45,6 +50,7 @@ export function ListOfProducts({ data, onHandleMarkDone, onHandleRemove }: ListO
         }
 
         <TextItem>{data.unity}</TextItem>
+
         {!data.done ?
           <TextItemName numberOfLines={1}>{data.productName}</TextItemName>
           :
@@ -52,7 +58,11 @@ export function ListOfProducts({ data, onHandleMarkDone, onHandleRemove }: ListO
         }
         
       <Info>
-        <TextItem style={{ marginRight: 8 }}>R$ {data.price.toFixed(2)}</TextItem>
+        <TextItem>R$ {data.price.toFixed(2)}</TextItem>
+
+        <TouchableOpacity style={{ marginRight: 4 }} onPress={handleEdit}>
+          <Feather name="edit" size={32} color="#C2C2C2" />
+        </TouchableOpacity>
         
         <TouchableOpacity onPress={handleProductRemove}>
           <Feather name="trash" size={32} color="#C2C2C2" />

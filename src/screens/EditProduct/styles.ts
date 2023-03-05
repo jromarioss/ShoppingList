@@ -41,11 +41,5 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.COLORS.WHITE};
   font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
   font-weight: bold;
-`;
-
-export const Text = styled.Text`
   margin-bottom: 32px;
-  text-align: center;
-  color: ${({ theme }) => theme.COLORS.GRAY_300};
-  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
