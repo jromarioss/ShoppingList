@@ -59,7 +59,7 @@ export function RegisterList() {
           placeholder="Nome da lista de compra"
           placeholderTextColor="#C2C2C2"
           onChangeText={setList}
-          maxLength={13}
+          maxLength={30}
         />
 
         <Button title="Criar lista" onPress={handleNewList} />

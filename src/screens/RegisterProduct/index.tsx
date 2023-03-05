@@ -79,7 +79,7 @@ export function RegisterProduct() {
           placeholderTextColor="#C2C2C2"
           onChangeText={setProductName}
           value={productName}
-          maxLength={10}
+          maxLength={30}
         />
 
         <ViewInput>

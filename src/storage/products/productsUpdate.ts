@@ -18,13 +18,14 @@ export async function productToEdit(updateProduct: ProductsStorageDTO, list: str
   try {
     const storage = await productsGetByList(list);
 
-    const productToEdit = storage.filter(product => product.id === updateProduct.id);
+    const productToEdit = storage.findIndex(product => product.id === updateProduct.id);
+    
+    if (productToEdit !== -1) {
+      storage[productToEdit] = updateProduct;
 
-    if (productToEdit.length > 0) {
-      const product = JSON.stringify(updateProduct);
-
+      const product = JSON.stringify(storage);
       await AsyncStorage.setItem(`${PRODUCTS_COLLECTION}-${list}`, product);
-    } 
+    }
   } catch(error) {
     throw error;
   }

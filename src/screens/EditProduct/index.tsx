@@ -59,7 +59,7 @@ export function EditProduct() {
           placeholderTextColor="#C2C2C2"
           onChangeText={setProductName}
           value={productName}
-          maxLength={10}
+          maxLength={30}
         />
 
         <ViewInput>
