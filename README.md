@@ -11,7 +11,7 @@
 
 - Ou use QR Code no caso de espelhar no seu celular com o aplicativo expo go.
 
-## Download Google play
- - https://play.google.com/store/apps/details?id=com.jromarioss.ShoppingList
+<!-- ## Download Google play
+ - https://play.google.com/store/apps/details?id=com.jromarioss.ShoppingList -->
 
 <img src="./public/appImage.png" alt="" >
