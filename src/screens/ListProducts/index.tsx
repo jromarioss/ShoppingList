@@ -15,6 +15,7 @@ import { listToRemoveByName } from '../../storage/list/listToRemoveByName';
 import { productsGetByList } from '../../storage/products/productsGetByList';
 import { ProductsStorageDTO } from '../../storage/products/ProductsStorageDTO';
 import { productsRemoveByList } from '../../storage/products/productsRemoveByList';
+import { formatNumber } from '../../utils/formatNumber';
 
 export interface RouteParams {
   list: string;
@@ -184,7 +185,7 @@ export function ListProducts() {
         {products.length !== 0 && (
           <TotalArea>
             <TotalPrice>Total de gastos</TotalPrice>
-            <TotalPrice>R$ {totalPrice.toFixed(2)}</TotalPrice>
+            <TotalPrice>R$ {formatNumber(totalPrice)}</TotalPrice>
           </TotalArea>
         )}
 

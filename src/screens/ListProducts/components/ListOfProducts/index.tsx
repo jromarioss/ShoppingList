@@ -4,6 +4,7 @@ import { Alert, TouchableOpacity } from 'react-native';
 import { Container, Info, TextItem, TextItemName, TextItemLineThrough } from './styled';
 
 import { ProductsStorageDTO } from '../../../../storage/products/ProductsStorageDTO';
+import { formatNumber } from '../../../../utils/formatNumber';
 
 interface RouteParams {
   list: string;
@@ -58,7 +59,7 @@ export function ListOfProducts({ data, onHandleMarkDone, onHandleRemove, onHandl
         }
         
       <Info>
-        <TextItem>R$ {data.price.toFixed(2)}</TextItem>
+        <TextItem>R$ {formatNumber(data.price)}</TextItem>
 
         <TouchableOpacity style={{ marginRight: 4 }} onPress={handleEdit}>
           <Feather name="edit" size={32} color="#C2C2C2" />

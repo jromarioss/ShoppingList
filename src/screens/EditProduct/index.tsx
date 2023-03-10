@@ -69,7 +69,7 @@ export function EditProduct() {
             keyboardType="number-pad"
             onChangeText={setProductPrice}
             value={productPrice}
-            maxLength={6}
+            maxLength={8}
           />
           <InputUnity 
             placeholder="Unidade" 

@@ -18,7 +18,6 @@ export function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
 
-
   function handleNewList() {
     navigation.navigate('newList');
   }
